@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nikita Dhoble | Aspiring Data Analyst & Python Developer</title>
+<meta name="description" content="Portfolio of Nikita Dhoble, a B.Tech Computer Engineering student at Government College of Engineering, Yavatmal, building projects in Python, SQL and machine learning.">
+<style>
+/* ===== Theme tokens: edit colours here ===== */
+:root{
+  --bg:#0a1428; --bg2:#0f1d38; --card:#12233f; --line:#223557;
+  --text:#f4f7fb; --muted:#aab8d0; --accent:#38bdf8; --accent2:#22d3ee;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+section{padding:4.5rem 0}
+section:nth-of-type(even){background:var(--bg2)}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;font-weight:700}
+h2{font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:1.75rem}
+h3{font-size:1.2rem;margin-bottom:.4rem}
+p{color:var(--muted);max-width:68ch}
+.skip{position:absolute;left:-999px;top:0;background:var(--accent);color:#04101f;padding:.6rem 1rem;z-index:100}
+.skip:focus{left:0}
+
+/* Navigation */
+header{position:sticky;top:0;z-index:50;background:rgba(10,20,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--text)}
+.logo:hover{text-decoration:none;color:var(--accent)}
+.links{display:flex;gap:1.5rem;list-style:none}
+.links a{color:var(--muted);font-size:.95rem}
+.links a:hover{color:var(--text);text-decoration:none}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:.45rem .6rem;cursor:pointer}
+
+/* Buttons */
+.btn{display:inline-block;padding:.75rem 1.4rem;border-radius:8px;font-weight:600;border:1px solid var(--accent);transition:transform .15s,background .15s}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn.primary{background:var(--accent);color:#04101f}
+.btn.primary:hover{background:var(--accent2)}
+.btn.ghost{color:var(--accent)}
+.btn.ghost:hover{background:rgba(56,189,248,.1)}
+
+/* Hero */
+.hero{padding:5rem 0 4.5rem;background:radial-gradient(900px 400px at 85% 0%,rgba(34,211,238,.14),transparent 60%),var(--bg)}
+.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.4rem,7vw,4rem);margin-bottom:.6rem}
+.hero .title{color:var(--accent);font-weight:600;margin-bottom:1rem}
+.hero p{margin-bottom:1.6rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1.5rem}
+.social{display:flex;flex-wrap:wrap;gap:1.1rem}
+.social a{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted)}
+.social a:hover{color:var(--accent)}
+.social svg{width:20px;height:20px;fill:currentColor}
+/* CSS-only visual: abstract chart panel (decorative, no data claims) */
+.viz{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.2rem}
+.viz .dots{display:flex;gap:6px;margin-bottom:1rem}
+.viz .dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.bars{display:flex;align-items:flex-end;gap:10px;height:150px;border-bottom:1px solid var(--line)}
+.bars b{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(var(--accent2),var(--accent))}
+.viz code{display:block;margin-top:1rem;font-size:.85rem;color:var(--muted);font-family:ui-monospace,Menlo,Consolas,monospace}
+
+/* Skills */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.4rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+.tags span{background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.3);border-radius:999px;padding:.25rem .8rem;font-size:.9rem}
+
+/* Projects */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
+.proj{display:flex;flex-direction:column;transition:transform .15s,border-color .15s}
+.proj:hover{transform:translateY(-3px);border-color:var(--accent)}
+.proj p{margin-bottom:1rem;font-size:.95rem}
+.proj .tags{margin:0 0 1rem}
+.proj .row{margin-top:auto;display:flex;gap:1rem;flex-wrap:wrap}
+.note{color:var(--muted);font-size:.85rem;font-style:italic;margin-bottom:.8rem}
+
+/* Lists */
+.list{list-style:none;display:grid;gap:.9rem}
+.list li{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:1rem 1.2rem}
+.list li strong{display:block}
+.list li span{color:var(--muted);font-size:.95rem}
+
+/* Contact + footer */
+.contact .btn{margin:.3rem .5rem .3rem 0}
+footer{border-top:1px solid var(--line);padding:2rem 0;background:var(--bg)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+footer p{font-size:.9rem}
+footer .f-links{display:flex;gap:1.2rem;flex-wrap:wrap}
+
+/* Responsive */
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr}
+  .menu-btn{display:block}
+  .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line)}
+  .links.open{display:flex}
+  .links a{display:block;padding:.9rem 1.25rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <nav class="wrap" aria-label="Main navigation">
+    <a class="logo" href="#home">Nikita Dhoble</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">Menu</button>
+    <ul class="links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div>
+        <h1>Nikita Dhoble</h1>
+        <p class="title">B.Tech Computer Engineering Student | Aspiring Data Analyst &amp; Python Developer</p>
+        <p>I am a final-year-track engineering student at Government College of Engineering, Yavatmal. I build projects with Python, SQL and machine learning, and I am looking for internship and entry-level opportunities in data analysis and Python development.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View my projects</a>
+          <a class="btn ghost" href="#contact">Contact me</a>
+        </div>
+        <div class="social">
+          <a href="https://github.com/NikitaDhoble" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.15v3.19c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</a>
+          <a href="https://www.linkedin.com/in/nikita-dhoble-b77026334/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+          <a href="https://leetcode.com/Nikita_dhoble/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.48 0a1.37 1.37 0 0 0-.96.4L3.4 9.77a4.9 4.9 0 0 0 0 6.94l3.9 3.9a4.9 4.9 0 0 0 6.93 0l2.3-2.3a1.37 1.37 0 0 0-1.94-1.94l-2.3 2.3a2.15 2.15 0 0 1-3.05 0l-3.9-3.9a2.15 2.15 0 0 1 0-3.05l9.1-9.37A1.37 1.37 0 0 0 13.48 0zm3.2 14.2h4.2a1.37 1.37 0 0 0 0-2.74h-4.2a1.37 1.37 0 0 0 0 2.74z"/></svg>LeetCode</a>
+        </div>
+      </div>
+      <div class="viz" aria-hidden="true">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="bars">
+          <b style="height:35%"></b><b style="height:55%"></b><b style="height:42%"></b><b style="height:75%"></b><b style="height:60%"></b><b style="height:90%"></b>
+        </div>
+        <code>df.groupby("feature").mean().plot()</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <h2>About me</h2>
+      <p>I am a B.Tech Computer Engineering student at Government College of Engineering, Yavatmal, graduating in 2027. I enjoy turning data into something useful, from cleaning and exploring datasets with Pandas and NumPy to building machine learning models with Scikit-learn.</p>
+      <p style="margin-top:1rem">I practise data structures and algorithms on LeetCode to strengthen my problem-solving, and I use Git and GitHub to keep my project work organised. I have built a recommendation system, a Flask web application, and I am working on a cardiovascular disease risk prediction project. I am seeking an internship or entry-level role where I can keep learning while contributing to real data and Python work.</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <h2>Technical skills</h2>
+      <div class="skill-grid">
+        <div class="panel"><h3>Programming and databases</h3><div class="tags"><span>Python</span><span>SQL</span></div></div>
+        <div class="panel"><h3>Data analysis and visualization</h3><div class="tags"><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Tableau</span></div></div>
+        <div class="panel"><h3>Machine learning</h3><div class="tags"><span>Machine Learning</span><span>Scikit-learn</span></div></div>
+        <div class="panel"><h3>Core computer science</h3><div class="tags"><span>Data Structures and Algorithms</span></div></div>
+        <div class="panel"><h3>Tools</h3><div class="tags"><span>Git</span><span>GitHub</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <h2>Featured projects</h2>
+      <p class="note">Descriptions marked "edit" are placeholders. Replace them with the problem each project solves.</p>
+      <div class="proj-grid">
+        <article class="panel proj">
+          <h3>Movie Recommendation System</h3>
+          <p>Edit: describe the problem this solves, the approach you used, and the dataset.</p>
+          <div class="tags"><span>Edit: add technologies</span></div>
+          <div class="row"><a href="https://github.com/NikitaDhoble/movie-recommender-system" target="_blank" rel="noopener noreferrer">GitHub repository</a></div>
+        </article>
+        <article class="panel proj">
+          <h3>Women's Safety and Health Monitoring System</h3>
+          <p>Edit: describe the problem this solves and the features you built.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Flask</span></div>
+          <div class="row"><a href="https://github.com/NikitaDhoble/Womens-system" target="_blank" rel="noopener noreferrer">GitHub repository</a></div>
+        </article>
+        <article class="panel proj">
+          <h3>Cardiovascular Disease Risk Prediction</h3>
+          <p>A healthcare project in progress. Edit: add the problem statement and approach once the project is final.</p>
+          <div class="tags"><span>Edit: add technologies</span></div>
+          <div class="row"><span class="note">Repository link coming soon</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <ul class="list">
+        <li><strong>B.Tech in Computer Engineering</strong><span>Government College of Engineering, Yavatmal, Maharashtra | Graduating 2027</span><br><span>CGPA: [edit: add your CGPA or remove this line]</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="wrap">
+      <h2>Achievements</h2>
+      <ul class="list">
+        <li><strong>C-Rush Hackathon Winner</strong><span>2024</span></li>
+        <li><strong>Best AI Model Award, Pabal Hackathon</strong><span>2025</span></li>
+        <li><strong>Inter-college volleyball</strong><span>Represented the college in inter-college volleyball tournaments</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p style="margin-bottom:1.2rem">I am open to internships and entry-level roles. The fastest way to reach me is by email.</p>
+      <a class="btn primary" id="emailBtn" href="#">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/nikita-dhoble-b77026334/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/NikitaDhoble" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <p style="margin-top:1rem" id="emailText"></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; <span id="year"></span> Nikita Dhoble. Yavatmal, Maharashtra, India.</p>
+    <div class="f-links">
+      <a href="https://github.com/NikitaDhoble" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/nikita-dhoble-b77026334/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://leetcode.com/Nikita_dhoble/" target="_blank" rel="noopener noreferrer">LeetCode</a>
+      <a href="#home">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== Edit your email here (one place) ===== */
+const EMAIL = "your-email@example.com";
+
+// Email links
+const btn = document.getElementById("emailBtn");
+btn.href = "mailto:" + EMAIL + "?subject=Hello%20Nikita";
+document.getElementById("emailText").textContent = "Email: " + EMAIL;
+
+// Footer year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Mobile menu
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+menuBtn.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open);
+});
+navLinks.querySelectorAll("a").forEach(a =>
+  a.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  })
+);
+</script>
+</body>
+</html>
